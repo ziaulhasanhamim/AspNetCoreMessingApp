@@ -1,0 +1,393 @@
+﻿@page
+@model IndexModel
+
+<div class="wrapper">
+    <div class="chat-first-column">
+        <div class="chat-profile">
+            <div class="chat-profile-inside">
+                <div class="chat-titles">
+                    <img src="/@(((User)HttpContext.Items["user"]).ProfileImage)" alt="" />
+                    <h3>Chats</h3>
+                </div>
+
+                <div class="chat-options">
+                    <div class="menu option option-hov">
+                        <span> <i class="uil uil-ellipsis-h cen"></i></span>
+                    </div>
+                    <div class="video option option-hov">
+                        <span> <i class="uil uil-video cen"></i></span>
+                    </div>
+                    <div class="add-new option option-hov">
+                        <span><i class="uil uil-edit cen"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="searchbar-container">
+                <table class="search-bar">
+                    <tr>
+                        <td>
+                            <a class="search-icon" href="#">
+                                <i class="uil uil-search"></i>
+                            </a>
+                        </td>
+                        <td><input type="text" placeholder="Search Messages..." /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="chat-feeds" onmouseover="scrollhover()">
+            <div class="chat-title-scroll">
+                <div class="chat-user-message-titles active">
+
+                    <div class="chat-user-titles-options">
+                        <div class="cu-round-shape">
+                            <span><i class="uil uil-ellipsis-h chat-user-titles-icon"></i></span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="chat-user">
+                        <div class="chat-user-profile-img">
+                            <img src="/images/kakashi.jpg" alt="" />
+                        </div>
+                        <div class="chat-user-title">
+                            <span class="chat-username">Xettri Aleen</span>
+                            <div class="message-title-body">
+                                <span class="User">You</span>:
+                                <span class="Message">Hi what you're doing</span>
+                                <span class="Mesage-sent-time">. 36m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-user-title-seen">
+                        <img src="/images/icons/check-circle.svg" alt="" />
+                    </div>
+                </div>
+
+                <div class="chat-user-message-titles ">
+                    <div class="chat-user-titles-options">
+                        <div class="cu-round-shape">
+                            <span><i class="uil uil-ellipsis-h chat-user-titles-icon"></i></span>
+
+                        </div>
+                    </div>
+                    <div class="chat-user">
+                        <div class="chat-user-profile-img">
+                            <img src="./images/aleen.jpg" alt="" />
+                        </div>
+                        <!-- *** this gonna be name and message body i means title -->
+                        <div class="chat-user-title">
+                            <span class="chat-username">Scorpion</span>
+                            <div class="message-title-body">
+                                <span class="User">You</span>:
+                                <span class="Message">Hi what you're doing</span>
+                                <span class="Mesage-sent-time">. 36m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- todo now this portion will be either message seen or hasn't -->
+                    <div class="chat-user-title-seen">
+                        <img src="./images/icons/check-circle.svg" alt="" />
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div class="chat-second-column">
+
+        <!-- todo this is chat header where calling video and info will be edited -->
+        <div class="chat-content-header">
+            <div class="chat-profile-titles">
+                <div class="chat-content-user-profile">
+                    <img src="/images/kakashi.jpg" alt="">
+                    <span class="profile-user-name">Xettri Aleen </span>
+
+                </div>
+                <div class="chat-content-user-call">
+                    <div class="cc-call cc-option ">
+                        <span>
+                            <i class="uil uil-phone-alt ccuc"></i>
+                        </span>
+                    </div>
+
+                    <div class="cc-video cc-option ">
+                        <span>
+                            <i class="uil uil-video ccuc"></i>
+                        </span>
+                    </div>
+
+                    <div class="cc-info cc-option">
+                        <span>
+                            <i class="uil uil-info-circle ccuc"></i>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-content-body">
+           
+
+            <div class="chat-body">
+                <div class="cb-user-messages">
+
+                    <div class="cb-user ">
+                        <div class="cb-user-profile-img um"><img src="./images/kakashi.jpg" alt=""></div>
+                        <div class="cb-user-message-wrapper ">
+                            <div class="cb-user-message "> <span>k grdei xau?</span></div>
+                        </div>
+                        <div class="cb-option um">
+                            <div class="cb-option-emoji cb-option-shape">
+                                <span><i class="uil uil-smile cb-icon"></i></span>
+                            </div>
+                            <div class="cb-option-forward cb-option-shape">
+                                <span> <span><i class="uil uil-share cb-icon"></i></span></span>
+                            </div>
+                            <div class="cb-option-options cb-option-shape">
+                                <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- todo looping user messages -->
+                    <div class="cb-user ">
+                        <div class="cb-user-profile-img um"><img src="./images/kakashi.jpg" alt=""></div>
+                        <div class="cb-user-message-wrapper ">
+                            <div class="cb-user-message "> <span>k grdei xau?</span></div>
+                        </div>
+                        <div class="cb-option um">
+                            <div class="cb-option-emoji cb-option-shape">
+                                <span><i class="uil uil-smile cb-icon"></i></span>
+                            </div>
+                            <div class="cb-option-forward cb-option-shape">
+                                <span> <span><i class="uil uil-share cb-icon"></i></span></span>
+                            </div>
+                            <div class="cb-option-options cb-option-shape">
+                                <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- todo looping user messages -->
+                    <div class="cb-user cb-user-js">
+                        <div class="cb-user-profile-img um"><img src="./images/kakashi.jpg" alt=""></div>
+                        <div class="cb-user-message-wrapper ">
+                            <div class="cb-user-message "> <span>Today i had finished so many things lol firsr of all chat ui cloning whole messages</span></div>
+                        </div>
+                        <div class="cb-option um">
+                            <div class="cb-option-emoji cb-option-shape">
+                                <span><i class="uil uil-smile cb-icon"></i></span>
+                            </div>
+                            <div class="cb-option-forward cb-option-shape">
+                                <span> <span><i class="uil uil-share cb-icon"></i></span></span>
+                            </div>
+                            <div class="cb-option-options cb-option-shape">
+                                <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- todo looping user messages -->
+                    <!-- todo now your messages designing -->
+                    <div class="cb-own">
+                        <div class="cb-option um">
+                            <div class="cb-option-emoji cb-option-shape">
+                                <span><i class="uil uil-smile cb-icon"></i></span>
+                            </div>
+                            <div class="cb-option-forward cb-option-shape">
+                                <span> <span><i class="uil uil-share cb-icon"></i></span></span>
+                            </div>
+                            <div class="cb-option-options cb-option-shape">
+                                <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
+                            </div>
+                        </div>
+                        <div class="cb-own-message-wrapper ">
+                            <div class="cb-own-message "> <span>Today i had finished so many things lol firsr of all chat ui cloning whole messages</span></div>
+                        </div>
+
+                    </div>
+                    <div class="cb-own">
+                        <div class="cb-option um">
+                            <div class="cb-option-emoji cb-option-shape">
+                                <span><i class="uil uil-smile cb-icon"></i></span>
+                            </div>
+                            <div class="cb-option-forward cb-option-shape">
+                                <span> <span><i class="uil uil-share cb-icon"></i></span></span>
+                            </div>
+                            <div class="cb-option-options cb-option-shape">
+                                <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
+                            </div>
+                        </div>
+                        <div class="cb-own-message-wrapper">
+                            <div class="cb-own-message">
+                                <span>I leterally have no idea that you are talking kai k ho kho vnnei ra grnu nei saro vyo about</span>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- todo looping user messages -->
+                    <div class="cb-user cb-user-js">
+                        <div class="cb-user-profile-img um"><img src="./images/kakashi.jpg" alt=""></div>
+                        <div class="cb-user-message-wrapper ">
+                            <div class="cb-user-message "> <span>Hunxa aafno tarka ho tei vyera grdei xu</span></div>
+                        </div>
+                        <div class="cb-option um">
+                            <div class="cb-option-emoji cb-option-shape">
+                                <span><i class="uil uil-smile cb-icon"></i></span>
+                            </div>
+                            <div class="cb-option-forward cb-option-shape">
+                                <span> <span><i class="uil uil-share cb-icon"></i></span></span>
+                            </div>
+                            <div class="cb-option-options cb-option-shape">
+                                <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- todo looping user messages -->
+                    <div class="cb-own">
+                        <div class="cb-option um">
+                            <div class="cb-option-emoji cb-option-shape">
+                                <span><i class="uil uil-smile cb-icon"></i></span>
+                            </div>
+                            <div class="cb-option-forward cb-option-shape">
+                                <span> <span><i class="uil uil-share cb-icon"></i></span></span>
+                            </div>
+                            <div class="cb-option-options cb-option-shape">
+                                <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
+                            </div>
+                        </div>
+                        <div class="cb-own-message-wrapper">
+                            <div class="cb-own-message">
+                                <span>doing nothing just doing some coding stuffs and all and how about u?</span>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- todo looping user messages -->
+                    <div class="cb-user cb-user-js">
+                        <div class="cb-user-profile-img um"><img src="./images/kakashi.jpg" alt=""></div>
+                        <div class="cb-user-message-wrapper ">
+                            <div class="cb-user-message "> <span>ani k grdei xauta? tme</span></div>
+                        </div>
+                        <div class="cb-option um">
+                            <div class="cb-option-emoji cb-option-shape">
+                                <span><i class="uil uil-smile cb-icon"></i></span>
+                            </div>
+                            <div class="cb-option-forward cb-option-shape">
+                                <span> <span><i class="uil uil-share cb-icon"></i></span></span>
+                            </div>
+                            <div class="cb-option-options cb-option-shape">
+                                <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- todo looping user messages -->
+
+                </div>
+
+
+                <!--todo this is attachments emoji adder by clicking add from chat-input-message -->
+                <!-- todo this options will be enabled lol -->
+                <div class="ci-add-drawer">
+                    <div class="ci-ad-image ci-add-option">
+                        <span><i class="uil uil-scenery"></i></span>
+                    </div>
+                    <div class="ci-ad-sticker ci-add-option">
+
+                        <span><i class="uil uil-grin-tongue-wink-alt"></i></span>
+                    </div>
+                    <div class="ci-ad-gif ci-add-option">
+                        <span><i class="uil uil-scenery"></i></span>
+                    </div>
+                    <div class="ci-ad-attachments ci-add-option">
+                        <span><i class="uil uil-paperclip"></i></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="chat-input-message">
+            <!-- todo Note this is a input portion where you will gonna input mesage and send the input will be
+            todo rendered out on chat content body in here we will gonna add GIFS,IMAGES,TEXT,ATTACHMENTS and all -->
+            <div class="chat-input-wrapper">
+
+                <div class="chat-input-add-drawer">
+                    <div class="cia-add-option cia-options">
+                        <span><i class="uil uil-plus"></i></span>
+                    </div>
+                    <div class="cia-image-option cia-option-close cia-options">
+                        <span><i class="uil uil-scenery"></i></span>
+                    </div>
+                    <div class="cia-sticker-option cia-option-close cia-options">
+
+                        <span><i class="uil uil-grin-tongue-wink-alt"></i></span>
+                    </div>
+                    <div class="cia-gif-option cia-option-close cia-options">
+                        <span><i class="uil uil-scenery"></i></span>
+                    </div>
+                </div>
+
+                <!--? now there must be input or message typing boxes  -->
+                <div class="chat-input-messagebox">
+                    <textarea placeholder="Aa" class="message-box" rows="1"></textarea>
+                    <div class="messagebox-emoji">
+                        <span><i class="uil uil-grin"></i></span>
+                    </div>
+                </div>
+
+                <div class="chat-input-sendicon">
+                    <span class="cis-span"><i class="uil uil-message"></i></span>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="chat-third-column">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
+        modi non optio dolorem excepturi. Ad quod ducimus similique sequi earum,
+        ipsum illo quas iste dolor blanditiis! Facilis quisquam tempore vitae
+        quia. Soluta, sapiente nemo veritatis eaque culpa quibusdam nesciunt
+        unde recusandae cumque magni enim expedita maiores. Nam fuga porro dolor
+        nulla quas. Porro minima id consectetur! Assumenda saepe corporis rem
+        ipsa totam, aliquid consequatur. At voluptatem beatae mollitia quia
+        ipsum deleniti! Quas nisi blanditiis consequatur accusantium dolorum
+        unde at, pariatur cum harum error. Placeat, at quam nobis reiciendis
+        velit impedit labore. Velit minima assumenda voluptatibus ab quam modi
+        reprehenderit explicabo reiciendis. Cumque possimus vitae rem officia
+        dicta delectus, nihil perferendis maiores fugit, animi eveniet. Suscipit
+        tempore deleniti, eos fugit quod facilis culpa, praesentium, aut
+        doloribus sint recusandae. Qui deserunt officia velit accusantium
+        aliquam assumenda eius praesentium, corporis ducimus fuga sed
+        consectetur ratione necessitatibus mollitia cumque molestiae harum
+        voluptatem incidunt nulla itaque animi unde? Repudiandae cumque est
+        iusto amet eaque earum praesentium nostrum error similique, ea
+        accusantium fugit eius sapiente deleniti corporis labore, id fugiat quam
+        ab possimus dolore recusandae natus illo. Amet quod fugit voluptate
+        distinctio nulla rerum, necessitatibus delectus alias, ullam id beatae
+        vel nam nostrum, sunt optio eius.
+    </div>
+</div>
+
+
+@section css
+{
+    <link rel="stylesheet" href="/css/chat-second-column.css" />
+}
+
+
+@section scripts
+{
+    <script src="/js/chat.js"></script>
+}

@@ -1,0 +1,298 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* user-select: none; */
+  -webkit-tap-highlight-color: transparent;
+}
+html{
+  scroll-behavior: smooth;
+}
+/* todo font */
+@font-face {
+  font-family: Segio;
+  src: url(../fonts/Segoe.ttf);
+}
+body {
+  overflow: hidden;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.chat-first-column {
+  background-color: #ffffff;
+  height: 100vh;
+  width: 360px;
+  display: block;
+  border-right: 1px solid #ececec ;
+}
+
+.chat-profile {
+  display: flex;
+  flex-flow: column;
+  padding: 15px;
+
+  /* background-color: aqua; */
+}
+.chat-profile-inside,
+.chat-titles,
+.chat-options {
+  display: flex;
+  flex-flow: row;
+
+  padding: 0px;
+  align-items: center;
+}
+.chat-titles {
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.chat-titles img {
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  margin-right: 10px;
+}
+
+.chat-profile-inside {
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.chat-options {
+  font-size: 22px;
+  text-align: center;
+}
+.option {
+  position: relative;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  margin: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.option-hov:hover {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  background-color: #e2e2e2;
+}
+
+.cen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*text-align: center;
+  */ /*position: absolute;
+  */ /*top: 5px;
+  */ /*right: 4.5px;
+  */ /*position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  */
+  color: #1c1e21;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+
+.chat-third-column {
+  background-color: #ffffff;
+  overflow-y: scroll;
+  flex: 2;
+}
+/* todo starting search bar */
+.searchbar-container {
+  position: relative;
+  height: 38px;
+  background-color: #f3f3f5;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+.search-bar {
+  width: 100%;
+  height: 100%;
+}
+
+.search-bar input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0px 5px;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+  font-size: 16px;
+  background-color: #f3f3f5;
+  user-select: none;
+  outline: 0px;
+}
+.search-icon {
+  position: relative;
+  margin-left: 10px;
+
+  font-size: 20px;
+}
+/* .search-icon i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
+
+/* todo starting chat feeds user */
+.chat-feeds {
+  height: 78vh;
+
+  /* background-color: aqua; */
+  margin-top: 15px;
+}
+.chat-title-scroll {
+  overflow-y: scroll;
+  height: 78vh;
+}
+/* .chat-title-scroll:hover{
+  overflow-y: scroll;
+} */
+.chat-title-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+/* .chat-title-scroll::-webkit-scrollbar-track {
+  /* margin-top: 10px;
+  margin-bottom: 350px; 
+  
+}*/
+/*
+.chat-user-message-titles{
+
+  
+} */
+:root {
+  --pseudo-backgroundcolor: transparent;
+}
+/* .chat-user-message-titles::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+  */
+.chat-title-scroll::-webkit-scrollbar-thumb {
+  background: var(--pseudo-backgroundcolor);
+  /* background-color: transparent; */
+  /* background-color: #BCC0C4; */
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+
+  -o-border-radius: 20px;
+}
+.chat-user-profile-img img {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  height: 100%;
+  width: 55px;
+}
+.chat-user-message-titles,
+.chat-user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.chat-user-profile-img {
+  margin-right: 10px;
+}
+.chat-user-message-titles {
+  justify-content: space-between;
+  position: relative;
+
+  padding: 10px;
+  margin: 6px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  cursor: pointer;
+}
+.chat-user-message-titles:hover {
+  background-color: #f5f5f5;
+}
+.active {
+  background-color: #f5f5f5;
+}
+/* todo lets create first chat-user-title option like when button/* 
+/*todo clicked users can see options of hide messages , delete messages and all */
+
+.chat-user-titles-options {
+  position: absolute;
+  right: 38px;
+  top: 18px;
+ 
+}
+.cu-round-shape{
+  font-size: 23px;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+  background-color: #FFFFFF;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width: 38px;
+  height: 38px;
+  position: relative;
+  display: none;
+}
+
+.cu-round-shape span{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #5B626A;
+}
+
+
+.chat-user-title-seen {
+  height: 100%;
+  width: 23px;
+}
+.chat-user-title {
+  padding: 0px 0px 1px;
+}
+.chat-username {
+  font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: #050505;
+}
+.User,
+.Mesage-sent-time,
+.Message {
+  font-family: Segio;
+  color: #65676b;
+  font-size: 14px;
+  padding: 0px 0px 1px;
+}
