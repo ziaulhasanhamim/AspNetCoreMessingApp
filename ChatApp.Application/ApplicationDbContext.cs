@@ -11,6 +11,7 @@ namespace ChatApp.Application
 {
     public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
+        public DbSet<Message> Messages { get; set; }
         public ApplicationDbContext(DbContextOptions options)
             : base(options)
         {

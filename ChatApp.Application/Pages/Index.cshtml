@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 
-<div class="wrapper">
+<div class="wrapper" id="app">
     <div class="chat-first-column">
         <div class="chat-profile">
             <div class="chat-profile-inside">
@@ -36,49 +36,21 @@
             </div>
         </div>
         <div class="chat-feeds" onmouseover="scrollhover()">
-            <div class="chat-title-scroll">
-                <div class="chat-user-message-titles active">
+            <div class="chat-title-scroll">                
 
+                <div :class="['chat-user-message-titles', {active: active_index == index}]" v-for="(user, index) in users" :key="index" @@click="change_active(index)">
                     <div class="chat-user-titles-options">
                         <div class="cu-round-shape">
                             <span><i class="uil uil-ellipsis-h chat-user-titles-icon"></i></span>
                         </div>
                     </div>
-
-
-
                     <div class="chat-user">
                         <div class="chat-user-profile-img">
-                            <img src="/images/kakashi.jpg" alt="" />
-                        </div>
-                        <div class="chat-user-title">
-                            <span class="chat-username">Xettri Aleen</span>
-                            <div class="message-title-body">
-                                <span class="User">You</span>:
-                                <span class="Message">Hi what you're doing</span>
-                                <span class="Mesage-sent-time">. 36m</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chat-user-title-seen">
-                        <img src="/images/icons/check-circle.svg" alt="" />
-                    </div>
-                </div>
-
-                <div class="chat-user-message-titles ">
-                    <div class="chat-user-titles-options">
-                        <div class="cu-round-shape">
-                            <span><i class="uil uil-ellipsis-h chat-user-titles-icon"></i></span>
-
-                        </div>
-                    </div>
-                    <div class="chat-user">
-                        <div class="chat-user-profile-img">
-                            <img src="./images/aleen.jpg" alt="" />
+                            <img :src="'/'+user.profileImage" alt="" />
                         </div>
                         <!-- *** this gonna be name and message body i means title -->
                         <div class="chat-user-title">
-                            <span class="chat-username">Scorpion</span>
+                            <span class="chat-username">{{ user.fulName }}</span>
                             <div class="message-title-body">
                                 <span class="User">You</span>:
                                 <span class="Message">Hi what you're doing</span>
@@ -91,11 +63,6 @@
                         <img src="./images/icons/check-circle.svg" alt="" />
                     </div>
                 </div>
-
-
-
-
-
             </div>
         </div>
     </div>
@@ -131,9 +98,9 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="chat-content-body">
-           
+
 
             <div class="chat-body">
                 <div class="cb-user-messages">
@@ -390,4 +357,5 @@
 @section scripts
 {
     <script src="/js/chat.js"></script>
+    <script src="~/js/index_page.js"></script>
 }

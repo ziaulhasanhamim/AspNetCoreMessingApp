@@ -76,6 +76,7 @@ namespace ChatApp.Application
             });
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
         }

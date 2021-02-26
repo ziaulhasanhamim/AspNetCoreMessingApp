@@ -18,17 +18,11 @@ namespace ChatApp.Application.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<User> signInManager, 
-            ILogger<LoginModel> logger,
-            UserManager<User> userManager)
+        public LoginModel(SignInManager<User> signInManager)
         {
-            _userManager = userManager;
             _signInManager = signInManager;
-            _logger = logger;
         }
 
         [BindProperty]

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,5 +23,10 @@ namespace ChatApp.Application.Models
                 return FirstName + " " +LastName;
             }
         }
+
+        [InverseProperty("To")]
+        public List<Message> ReceivedMessages { get; set; }
+        [InverseProperty("From")]
+        public List<Message> SentMessages { get; set; }
     }
 }
