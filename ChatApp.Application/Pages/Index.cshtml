@@ -72,8 +72,8 @@
         <div class="chat-content-header">
             <div class="chat-profile-titles">
                 <div class="chat-content-user-profile">
-                    <img src="/images/kakashi.jpg" alt="">
-                    <span class="profile-user-name">Xettri Aleen </span>
+                    <img :src="users.length != 0 ? '/'+users[active_index].profileImage : '/'" alt="">
+                    <span class="profile-user-name">{{ users[active_index].fulName }}</span>
 
                 </div>
                 <div class="chat-content-user-call">
@@ -100,169 +100,46 @@
         </div>
 
         <div class="chat-content-body">
-
-
             <div class="chat-body">
                 <div class="cb-user-messages">
-
-                    <div class="cb-user ">
-                        <div class="cb-user-profile-img um"><img src="./images/kakashi.jpg" alt=""></div>
-                        <div class="cb-user-message-wrapper ">
-                            <div class="cb-user-message "> <span>k grdei xau?</span></div>
-                        </div>
-                        <div class="cb-option um">
-                            <div class="cb-option-emoji cb-option-shape">
-                                <span><i class="uil uil-smile cb-icon"></i></span>
+                    <div v-for="message in messages" v-if="message.fromId == users[active_index].id || message.toId == users[active_index].id">
+                        <div class="cb-user" v-if="message.fromId == users[active_index].id">
+                            <div class="cb-user-profile-img um"><img :src="'/'+users[active_index].profileImage" alt=""></div>
+                            <div class="cb-user-message-wrapper ">
+                                <div class="cb-user-message "> <span>{{ message.text }}</span></div>
                             </div>
-                            <div class="cb-option-forward cb-option-shape">
-                                <span> <span><i class="uil uil-share cb-icon"></i></span></span>
-                            </div>
-                            <div class="cb-option-options cb-option-shape">
-                                <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- todo looping user messages -->
-                    <div class="cb-user ">
-                        <div class="cb-user-profile-img um"><img src="./images/kakashi.jpg" alt=""></div>
-                        <div class="cb-user-message-wrapper ">
-                            <div class="cb-user-message "> <span>k grdei xau?</span></div>
-                        </div>
-                        <div class="cb-option um">
-                            <div class="cb-option-emoji cb-option-shape">
-                                <span><i class="uil uil-smile cb-icon"></i></span>
-                            </div>
-                            <div class="cb-option-forward cb-option-shape">
-                                <span> <span><i class="uil uil-share cb-icon"></i></span></span>
-                            </div>
-                            <div class="cb-option-options cb-option-shape">
-                                <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
+                            <div class="cb-option um">
+                                <div class="cb-option-emoji cb-option-shape">
+                                    <span><i class="uil uil-smile cb-icon"></i></span>
+                                </div>
+                                <div class="cb-option-forward cb-option-shape">
+                                    <span> <span><i class="uil uil-share cb-icon"></i></span></span>
+                                </div>
+                                <div class="cb-option-options cb-option-shape">
+                                    <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- todo looping user messages -->
-                    <div class="cb-user cb-user-js">
-                        <div class="cb-user-profile-img um"><img src="./images/kakashi.jpg" alt=""></div>
-                        <div class="cb-user-message-wrapper ">
-                            <div class="cb-user-message "> <span>Today i had finished so many things lol firsr of all chat ui cloning whole messages</span></div>
-                        </div>
-                        <div class="cb-option um">
-                            <div class="cb-option-emoji cb-option-shape">
-                                <span><i class="uil uil-smile cb-icon"></i></span>
+                        <div class="cb-own" v-else>
+                            <div class="cb-option um">
+                                <div class="cb-option-emoji cb-option-shape">
+                                    <span><i class="uil uil-smile cb-icon"></i></span>
+                                </div>
+                                <div class="cb-option-forward cb-option-shape">
+                                    <span> <span><i class="uil uil-share cb-icon"></i></span></span>
+                                </div>
+                                <div class="cb-option-options cb-option-shape">
+                                    <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
+                                </div>
                             </div>
-                            <div class="cb-option-forward cb-option-shape">
-                                <span> <span><i class="uil uil-share cb-icon"></i></span></span>
-                            </div>
-                            <div class="cb-option-options cb-option-shape">
-                                <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
+                            <div class="cb-own-message-wrapper ">
+                                <div class="cb-own-message "> <span>{{ message.text }}</span></div>
                             </div>
                         </div>
                     </div>
-                    <!-- todo looping user messages -->
-                    <!-- todo now your messages designing -->
-                    <div class="cb-own">
-                        <div class="cb-option um">
-                            <div class="cb-option-emoji cb-option-shape">
-                                <span><i class="uil uil-smile cb-icon"></i></span>
-                            </div>
-                            <div class="cb-option-forward cb-option-shape">
-                                <span> <span><i class="uil uil-share cb-icon"></i></span></span>
-                            </div>
-                            <div class="cb-option-options cb-option-shape">
-                                <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
-                            </div>
-                        </div>
-                        <div class="cb-own-message-wrapper ">
-                            <div class="cb-own-message "> <span>Today i had finished so many things lol firsr of all chat ui cloning whole messages</span></div>
-                        </div>
-
-                    </div>
-                    <div class="cb-own">
-                        <div class="cb-option um">
-                            <div class="cb-option-emoji cb-option-shape">
-                                <span><i class="uil uil-smile cb-icon"></i></span>
-                            </div>
-                            <div class="cb-option-forward cb-option-shape">
-                                <span> <span><i class="uil uil-share cb-icon"></i></span></span>
-                            </div>
-                            <div class="cb-option-options cb-option-shape">
-                                <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
-                            </div>
-                        </div>
-                        <div class="cb-own-message-wrapper">
-                            <div class="cb-own-message">
-                                <span>I leterally have no idea that you are talking kai k ho kho vnnei ra grnu nei saro vyo about</span>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- todo looping user messages -->
-                    <div class="cb-user cb-user-js">
-                        <div class="cb-user-profile-img um"><img src="./images/kakashi.jpg" alt=""></div>
-                        <div class="cb-user-message-wrapper ">
-                            <div class="cb-user-message "> <span>Hunxa aafno tarka ho tei vyera grdei xu</span></div>
-                        </div>
-                        <div class="cb-option um">
-                            <div class="cb-option-emoji cb-option-shape">
-                                <span><i class="uil uil-smile cb-icon"></i></span>
-                            </div>
-                            <div class="cb-option-forward cb-option-shape">
-                                <span> <span><i class="uil uil-share cb-icon"></i></span></span>
-                            </div>
-                            <div class="cb-option-options cb-option-shape">
-                                <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- todo looping user messages -->
-                    <div class="cb-own">
-                        <div class="cb-option um">
-                            <div class="cb-option-emoji cb-option-shape">
-                                <span><i class="uil uil-smile cb-icon"></i></span>
-                            </div>
-                            <div class="cb-option-forward cb-option-shape">
-                                <span> <span><i class="uil uil-share cb-icon"></i></span></span>
-                            </div>
-                            <div class="cb-option-options cb-option-shape">
-                                <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
-                            </div>
-                        </div>
-                        <div class="cb-own-message-wrapper">
-                            <div class="cb-own-message">
-                                <span>doing nothing just doing some coding stuffs and all and how about u?</span>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- todo looping user messages -->
-                    <div class="cb-user cb-user-js">
-                        <div class="cb-user-profile-img um"><img src="./images/kakashi.jpg" alt=""></div>
-                        <div class="cb-user-message-wrapper ">
-                            <div class="cb-user-message "> <span>ani k grdei xauta? tme</span></div>
-                        </div>
-                        <div class="cb-option um">
-                            <div class="cb-option-emoji cb-option-shape">
-                                <span><i class="uil uil-smile cb-icon"></i></span>
-                            </div>
-                            <div class="cb-option-forward cb-option-shape">
-                                <span> <span><i class="uil uil-share cb-icon"></i></span></span>
-                            </div>
-                            <div class="cb-option-options cb-option-shape">
-                                <span><i class="uil uil-ellipsis-v cb-icon"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- todo looping user messages -->
-
                 </div>
 
 
-                <!--todo this is attachments emoji adder by clicking add from chat-input-message -->
-                <!-- todo this options will be enabled lol -->
                 <div class="ci-add-drawer">
                     <div class="ci-ad-image ci-add-option">
                         <span><i class="uil uil-scenery"></i></span>

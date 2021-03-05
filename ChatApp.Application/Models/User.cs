@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -25,8 +26,10 @@ namespace ChatApp.Application.Models
         }
 
         [InverseProperty("To")]
+        [JsonIgnore]
         public List<Message> ReceivedMessages { get; set; }
         [InverseProperty("From")]
+        [JsonIgnore]
         public List<Message> SentMessages { get; set; }
     }
 }

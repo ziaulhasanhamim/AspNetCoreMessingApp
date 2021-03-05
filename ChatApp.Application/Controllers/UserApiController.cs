@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ChatApp.Application.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,8 @@ namespace ChatApp.Application.Controllers
         [HttpGet("")]
         public async Task<IActionResult> GetAllUsers()
         {
-            return Ok(await _context.Users.ToListAsync());
+            var user = (User)HttpContext.Items["user"];
+            return Ok(await _context.Users.Where(u => u.Id != user.Id).ToListAsync());
         }
     }
 }

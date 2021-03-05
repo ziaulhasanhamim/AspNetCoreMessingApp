@@ -25,8 +25,17 @@ namespace ChatApp.Application
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                {
+
+                    options.SerializerSettings.ReferenceLoopHandling =
+                        Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
             services.AddRazorPages();
+
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("DataSource=mydb.db"));
+
             services.AddIdentity<User, IdentityRole<int>>(options =>
             {
                 options.User.RequireUniqueEmail = true;
@@ -38,12 +47,14 @@ namespace ChatApp.Application
                 options.Password.RequiredLength = 8;
                 options.SignIn.RequireConfirmedEmail = false;
             }).AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.ConfigureApplicationCookie(options => 
             {
                 options.Cookie.Name = "auth";
                 options.LoginPath = "/account/login";
                 options.LogoutPath = "/account/logout";
             });
+            services.AddSignalR();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -78,6 +89,7 @@ namespace ChatApp.Application
             {
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
+                endpoints.MapHub<ChatHub>("/chathub");
             });
         }
     }
